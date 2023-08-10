@@ -1,0 +1,54 @@
+<div style="display: flex; justify-content:space-between; align-items: center;">
+  <div>
+    <h1>Reactive Form</h1>
+    <form (ngSubmit)="onSubmit()"  [formGroup]="reactiveForm" >
+        <input type="hidden" id="Id" name="Id" formControlName="Id"/>
+        <label>First Name: </label>
+        <input type="text" name="FirstName" id="FirstName" placeholder="First Name" formControlName="FirstName"/>
+        
+        <br>
+        <span style="color: red" *ngIf="reactiveForm.get('FirstName').invalid && reactiveForm.get('FirstName').touched">Please enter valid input</span>
+        <br>
+
+        <label>Middle Name: </label>
+        <input type="text" name="MiddleName" id="MiddleName" placeholder="Middle Name" formControlName="MiddleName"/>
+
+        <br>
+        <span style="color: red" *ngIf="reactiveForm.get('MiddleName').invalid && reactiveForm.get('MiddleName').touched">Please enter valid input</span>
+        <br>
+
+        <label>Last Name: </label>
+        <input type="text" name="LastName" id="LastName" placeholder="Last Name" formControlName="LastName"/>
+
+        <br>
+        <span style="color: red" *ngIf="reactiveForm.get('LastName').invalid && reactiveForm.get('LastName').touched">Please enter valid input</span>
+        <br>
+
+        <label>Phone Number: </label>
+        <input type="tel" name="PhoneNumber" id="PhoneNumber" placeholder="Phone Number" formControlName="PhoneNumber" maxlength="10"/>
+
+        <br>
+        <span style="color: red" *ngIf="reactiveForm.get('PhoneNumber').invalid && reactiveForm.get('PhoneNumber').touched">Please enter valid input</span>
+        <br>
+
+        <label>Email ID: </label>
+        <input type="email" name="EmailId" id="EmailId" placeholder="Email ID" formControlName="EmailId"/>
+
+        <br>
+        <span style="color: red" *ngIf="reactiveForm.get('EmailId').invalid && reactiveForm.get('EmailId').touched">Please enter valid input</span>
+        <br>
+
+      <!----  <input type="submit" [disabled]="!reactiveForm.valid">-->
+      <button type="submit" [disabled]="!reactiveForm.valid">{{ submitButton }}</button>
+      <button type="button" (click)="onClear()">Clear</button>
+
+    </form>
+
+    <div *ngIf="msg" style="color: green">
+        <h1>Form Submitted SuccessFully</h1>
+    </div>
+  </div>
+
+
+  <app-second (updateForm)="updateFormDataUI($event)"></app-second>
+</div>

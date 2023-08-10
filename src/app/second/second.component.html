@@ -1,0 +1,19 @@
+<table border="1px" *ngIf="data?.length != 0">
+    <tr>
+        <th>First Name</th>
+        <th>Middle Name</th>
+        <th>Last Name</th>
+        <th>Phone Number</th>
+        <th>Email Id</th>
+        <th>Action</th>
+    </tr>
+    <tr *ngFor="let user of data;">
+        <td>{{user.FirstName}}</td>
+        <td>{{user.MiddleName}}</td>
+        <td>{{user.LastName}}</td>
+        <td>{{user.PhoneNumber}}</td>
+        <td>{{user.EmailId}}</td>
+        <td><button (click)="showForm(user)">UPDATE</button><button (click)="OnDelete(user)">DELETE</button></td>
+    </tr>
+</table>
+
